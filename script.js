@@ -23,6 +23,10 @@ document.addEventListener('keydown', () => {
     }
 })
 
+document.getElementById('annule').addEventListener('click', (e) => {
+    achatWindow.style.display = 'none';
+})
+
 submit.addEventListener('click', () => {
     let name = document.getElementById('Name');
     let prix = document.getElementById('Prix');
