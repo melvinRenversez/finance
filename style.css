@@ -5,40 +5,40 @@
 }
 body{
     display: flex;
-
+    background: #013044;
+    overflow: hidden;
 }
 section{
     height: 100vh;
 }
 .left{
-    background: red;
     width: 60%;
     position: relative;
 }
 .right{
-    background:purple;
     width: 40%;
+    border-left: 2px solid #000;
 }
 .right .top{
     position: relative;
-    background: yellow;
-    height: 30%;
+    height: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #434E60;
+}
+button{
+    margin: 0px 20px;
 }
 .right .bottom{
-    background: orange;
-    height: 70%;
+    height: 80%;
     position: relative;
     padding: 10px;
-    overflow-y: auto;
-}
-.solde{
-    background: blue;
+    overflow: scroll;
 }
 .solde h1{
     font-size: 3em;
+    color: #021A88;
 }
 .right .top button{
     height: 40px;
@@ -52,13 +52,13 @@ section{
     outline: none;
 }
 .box{
-    background: blue;
     margin-bottom: 10px;
     display: flex;
     font-size: 30px;
     justify-content: space-around;
     align-items: center;
     height: 60px;
+    border-radius: 10px;
 }
 .box button{
     width: 40px;
@@ -71,16 +71,16 @@ section{
     border: none;
 }
 .money{
-    background: blue;
     margin: 30px 10px;
     display: flex;
     height: 20%;
     justify-content: space-around;
     align-items: center;
+    position: relative;
 }
 .money div{
+    /* background: #E5665D; */
     height: 100%;
-    width: 400px;
     border-radius: 20px;
     display: flex;
     justify-content: space-around;
@@ -91,16 +91,19 @@ section{
     font-size: 5em;
 }
 .money div .signe{
-    background: red;
     display: flex;
     justify-content: left;
     width: 40%;
 }
 .plus{
-    background: green;
+    border: 2px solid #000;
+    width: 47%;
+    background: #92B245;
 }
 .moin{
-    background: gold;
+    border: 2px solid #000;
+    width: 47%;
+    background: #C60139;
 }
 .new-achat{
     position: absolute;
@@ -130,4 +133,99 @@ section{
     width: 70px;
     height: 25px;
     cursor: pointer;
+}
+@media screen and (max-width: 400px) {
+    body{
+        flex-direction: column;
+        position: relative;
+    }
+    section{
+        height: 50vh;
+        width: 100%;
+    }
+    .left{
+        width: 100%;
+        position: relative;
+        height: 40vh;
+    }
+    .right{
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        border-top: 2px solid #000;
+        border-left: 0px;
+    }
+    .right .top{
+        position: relative;
+        height: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .right .bottom{
+        height: 65%;
+        position: relative;
+        padding: 10px;
+        overflow-y: scroll;
+    }
+    button{
+        margin: 0px 0px;
+    }
+    .money{
+        margin: 10px 10px;
+        display: flex;
+        height: 21%;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .money div h1{
+        font-size: 3.5em;
+    }
+
+    .new-achat{
+        position: absolute;
+        background: whitesmoke;
+        border-radius: 20px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 15px;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+    }
+    .new-achat h1{
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    .new-achat input{
+        margin: 5px;
+        padding: 0px 2px;
+        height: 30px;
+        border: none;
+        outline: none;
+        border-bottom: 2px solid #000;
+    }
+    .new-achat button{
+        margin: 10px ;
+        width: 70px;
+        height: 25px;
+        cursor: pointer;
+    }
+    .box{
+        font-size: 20px;
+        height: 80px;
+    }
+    .box .titre{
+        width: 20%;
+        border-right: 2px solid #000;
+    }
+    .box #acheter{
+        width: 30px;
+        height: 30px;
+    }
+    .box #suprimer{
+        width: 30px;
+        height: 30px;
+    }
 }

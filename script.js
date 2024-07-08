@@ -56,9 +56,24 @@ function updateAcheter(){
 }
 
 function updateSupprimer(){
-    const supprimer = document.querySelectorAll('#supprimer');
+    const supprimer = document.querySelectorAll('#suprimer');
     supprimer.forEach(element => {
         element.addEventListener('click', () => {
+            let titre = element.parentElement.children[0].textContent
+            
+            for( var i = 0; i < num; i++){
+                e = "Achat" + i
+                var tab = JSON.parse(localStorage.getItem("Achat" + i))
+                if(tab){
+                    titreStorage = tab[0]
+                    console.log(titreStorage, titre)
+                    if(titreStorage == titre){
+                        console.log('true' , e)
+                        localStorage.removeItem(e)
+                    }
+                }
+            }
+
             element.parentNode.remove()
         })
     })
@@ -79,62 +94,65 @@ function drawAchat(){
     box.forEach(element => {
         element.remove()
     })
-    console.log(num)
     for( var i = 0; i < num; i++){
+        e = "Achat" + i
         var tab = JSON.parse(localStorage.getItem("Achat" + i))
 
-        let newBox = document.createElement("div")
-        newBox.setAttribute("class", "box")
-        newBox.setAttribute("id", "box")
-    
-        newTitre = document.createElement("div")
-        newTitre.setAttribute("class", "titre")
-        newTitre.innerHTML = tab[0]
-        newBox.appendChild(newTitre)
-    
-        var symbole = document.createElement('span')
-        symbole.innerHTML = "€"
-    
-        let newPrix = document.createElement("div")
-        newPrix.setAttribute("class", "prix")
-        let spanPrix = document.createElement("span")
-        spanPrix.innerHTML = tab[1]
-        newPrix.appendChild(spanPrix) 
-        newPrix.appendChild(symbole)
-        newBox.appendChild(newPrix)
-    
-        var symbole = document.createElement('span')
-        symbole.innerHTML = "€"
-    
-        let newManque = document.createElement("div")
-        newManque.setAttribute("class", "manque")
-        let spanManque = document.createElement("span")
-        spanManque.innerHTML = tab[2]
-        newManque.appendChild(spanManque) 
-        newManque.appendChild(symbole)
-        newBox.appendChild(newManque)
-    
-        var symbole = document.createElement('span')
-        symbole.innerHTML = "%"
-    
-        let newPourcentage = document.createElement("div")
-        newPourcentage.setAttribute("class", "pourcentage")
-        let spanPourcentage = document.createElement("span")
-        spanPourcentage.innerHTML = tab[3]
-        newPourcentage.appendChild(spanPourcentage) 
-        newPourcentage.appendChild(symbole)
-        newBox.appendChild(newPourcentage)
-    
-        newButton = document.createElement('button')
-        newButton.setAttribute("id", "acheter")
-        newButton.innerHTML = "<i class='bx bx-check'></i>"
-        newBox.appendChild(newButton)
-        newButton = document.createElement('button')
-        newButton.setAttribute("id", "supprimer")
-        newButton.innerHTML = "<i class='bx bx-x'></i>"
-        newBox.appendChild(newButton)
-    
-        content.appendChild(newBox)
+        if(tab){
+
+            let newBox = document.createElement("div")
+            newBox.setAttribute("class", "box")
+            newBox.setAttribute("id", "box")
+        
+            newTitre = document.createElement("div")
+            newTitre.setAttribute("class", "titre")
+            newTitre.innerHTML = tab[0]
+            newBox.appendChild(newTitre)
+        
+            var symbole = document.createElement('span')
+            symbole.innerHTML = "€"
+        
+            let newPrix = document.createElement("div")
+            newPrix.setAttribute("class", "prix")
+            let spanPrix = document.createElement("span")
+            spanPrix.innerHTML = tab[1]
+            newPrix.appendChild(spanPrix) 
+            newPrix.appendChild(symbole)
+            newBox.appendChild(newPrix)
+        
+            var symbole = document.createElement('span')
+            symbole.innerHTML = "€"
+        
+            let newManque = document.createElement("div")
+            newManque.setAttribute("class", "manque")
+            let spanManque = document.createElement("span")
+            spanManque.innerHTML = tab[2]
+            newManque.appendChild(spanManque) 
+            newManque.appendChild(symbole)
+            newBox.appendChild(newManque)
+        
+            var symbole = document.createElement('span')
+            symbole.innerHTML = "%"
+        
+            let newPourcentage = document.createElement("div")
+            newPourcentage.setAttribute("class", "pourcentage")
+            let spanPourcentage = document.createElement("span")
+            spanPourcentage.innerHTML = tab[3]
+            newPourcentage.appendChild(spanPourcentage) 
+            newPourcentage.appendChild(symbole)
+            newBox.appendChild(newPourcentage)
+        
+            newButton = document.createElement('button')
+            newButton.setAttribute("id", "acheter")
+            newButton.innerHTML = "<i class='bx bx-check'></i>"
+            newBox.appendChild(newButton)
+            newButton = document.createElement('button')
+            newButton.setAttribute("id", "suprimer")
+            newButton.innerHTML = "<i class='bx bx-x'></i>"
+            newBox.appendChild(newButton)
+        
+            content.appendChild(newBox)
+        }
     }
 
     update()
@@ -158,9 +176,9 @@ function updateBox(){
 
 
         if (boxPourcentage >= 100){
-            element.style.backgroundColor = "green"
+            element.style.backgroundColor = "#274C2B"
         }else{
-            element.style.backgroundColor = "red"
+            element.style.backgroundColor = "#D52728"
         }
 
     })
